@@ -1,4 +1,5 @@
-<?php   
+<?php
+
 class Product
 {
     public string $sku;
@@ -6,7 +7,8 @@ class Product
     public int $categoryId;
     public float $price;
     public int $qty;
-    public function __construct($sku, $name, $categoryId, $price, $qty)
+
+    public function __construct(string $sku, string $name, int $categoryId, float $price, int $qty)
     {
         $this->sku = $sku;
         $this->name = $name;
@@ -14,30 +16,35 @@ class Product
         $this->price = $price;
         $this->qty = $qty;
     }
+
+    // Tính tổng tiền của dòng sản phẩm
     public function lineTotal(): float
     {
         return $this->price * $this->qty;
     }
+
+    // Đánh giá mức tồn kho
     public function stockLevel(): string
     {
         if ($this->qty <= 2) {
-            return "Canh bao het hang";
+            return 'Cảnh báo hết hàng';
         } elseif ($this->qty <= 5) {
-            return "Sap het";
-        } else {
-            return "An toan";
+            return 'Sắp hết';
         }
+        return 'An toàn';
     }
+
+    // Phục vụ mục đích debug
     public function toArray(): array
     {
         return [
             'sku' => $this->sku,
             'name' => $this->name,
-            'categoryId' => $this->categoryId,
+            'category_id' => $this->categoryId,
             'price' => $this->price,
             'qty' => $this->qty,
-            'lineTotal' => $this->lineTotal(),
-            'stockLevel' => $this->stockLevel()
+            'line_total' => $this->lineTotal(),
+            'stock_level' => $this->stockLevel()
         ];
     }
 }

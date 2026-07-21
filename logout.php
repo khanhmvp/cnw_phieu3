@@ -1,7 +1,13 @@
 <?php
 session_start();
-$_SESSION = array(); // Xóa tất cả các biến session
-session_destroy(); // Hủy session
-header("Location: login.php"); // Chuyển hướng về trang đăng nhập
+
+// Hủy toàn bộ biến session
+$_SESSION = array();
+
+// Hủy Session trên server
+session_destroy();
+
+// Điều hướng về trang login
+header('Location: login.php');
 exit();
 ?>

@@ -24,7 +24,6 @@ $productsData = [
 // 2. Khởi tạo danh sách Object
 $categoryObjects = [];
 foreach ($categoriesData as $cat) {
-    // Lưu vào mảng dạng [id => Category Object] để tra cứu danh mục nhanh chóng
     $categoryObjects[$cat['id']] = new Category($cat['id'], $cat['name'], $cat['description']);
 }
 
